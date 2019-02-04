@@ -7,10 +7,10 @@ It's quite simply, check it up:
 ## Preferences
 The sidebar can be size you want. The _preferences_ are indicated in the `.CSS` itself. Search for:
 
-|under|   search for  |   default |  info |  
+|under|   search for  |   edit |  info |  
 |---|---|---|---|
-|`#browser`| `--sidebar-size` | `60%`  | Its height  |
-|`#sidebar-box`|   `right` |   ` ` |  The position. Change `right` itself to `left` if you want it on the left |
+|<sup>**#browser**</sup>**| <sup>**--sidebar-size**</sup> | <sup>**60%`**</sup> | <sup>**Its height**</sup>  |
+|<sup>**#sidebar-box**</sup>|   <sup>**right**</sup> |   <sup>**right**</sup> | <sup>**The position. Change `right` itself to `left` if you want it on the left**</sup> |
 
 ## Get it, 2 ways
 #### If you dont have touched _that_ 'chrome' folder:
