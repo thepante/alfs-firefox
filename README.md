@@ -9,7 +9,7 @@ The sidebar can be size you want. The _preferences_ are indicated in the `.CSS` 
 
 |under|   search for  |   edit |  info |  
 |---|---|---|---|
-|<sup>**#browser**</sup>**| <sup>**--sidebar-size**</sup> | <sup>**60%`**</sup> | <sup>**Its height**</sup>  |
+|<sup>**#browser**</sup>| <sup>**--sidebar-size**</sup> | <sup>**60%`**</sup> | <sup>**Its height**</sup>  |
 |<sup>**#sidebar-box**</sup>|   <sup>**right**</sup> |   <sup>**right**</sup> | <sup>**The position. Change `right` itself to `left` if you want it on the left**</sup> |
 
 ## Get it, 2 ways
