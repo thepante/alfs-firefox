@@ -13,6 +13,7 @@ The sidebar can be size you want. The _preferences_ are indicated in the `.CSS` 
 |---|---|---|---|
 |<sup>**#browser**</sup>| <sup>**--sidebar-size**</sup> | <sup>**60%**</sup> | <sup>**Its height**</sup>  |
 |<sup>**#browser**</sup>| <sup>**--sidebar-width**</sup> | <sup>**24em**</sup> | <sup>**Its width**</sup>  |
+|<sup>**#browser**</sup>| <sup>**--sidebar-strong**</sup> | <sup>**0.1**</sup> | <sup>**Shadow intensity. Can be negative**</sup>  |
 |<sup>**#sidebar-box**</sup>|   <sup>**right**</sup> |   <sup>**right**</sup> | <sup>**The position. Change `right` itself to `left` if you want it on the left**</sup> |
 
 ## How to get it
