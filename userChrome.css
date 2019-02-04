@@ -11,6 +11,7 @@
   /* Sidebar flotante */
   #browser {
     --sidebar-size: 60%;
+	--sidebar-width: 24em;
     position: absolute;
   }
   #appcontent {
@@ -34,7 +35,7 @@
     z-index: 9999;
   }
   #sidebar {
-    min-width: 32em !important;
+    min-width: var(--sidebar-width) !important;
     min-height: 100%;
     position: absolute;
     border-radius: 0 0 0 3px;
