@@ -1,3 +1,5 @@
+[![Screenshot](https://i.imgur.com/3yoxdiF.png)](https://i.imgur.com/ZduZ3Ot.mp4)
+
 ## Always loaded floating sidebar  
 The idea for this is to have the sidebar always ready to show, without loading its content everytime we hit the button or shortcut, to open it and show us whatever we have there.
 
@@ -30,5 +32,5 @@ I mean, just copy paste the codes :v
 
 ----
 
->**It may contain bugs**
+**It may contain bugs**
 
