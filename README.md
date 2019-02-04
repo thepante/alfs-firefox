@@ -27,9 +27,18 @@ The sidebar can be size you want. The _preferences_ are indicated in the `.CSS` 
 In your Firefox, go to the (hamburg) menu → `Help` → `Troubleshoot Information` OR type and enter to `about:support`. There is 'Profile Directory' information, click 'Open Directory'.
 That's where the `chrome` folder should be located.
 
-#### If you already touched the chrome folder
-You need the content of both files presented. If you have already have some or both of the files created, so: copy it's content to the yours.
-I mean, just copy paste the codes :v
+#### If you already have userChrome.js/.css
+**If you already have an userChrome.js:**
+- Just rename the .js from alfs, from `userChrome.js` to `alfs.uc.js`
+- Now you can copy it in the `chrome` folder as that
+
+**If you already have an userChrome.css:**
+- Open both `.css` files
+- Copy the content of the .css from alfs
+- Paste the copied code to the final of your `userChrome.css`
+
+Restart Firefox. `about:restartrequired`
+
 
 ----
 
