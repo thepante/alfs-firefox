@@ -33,4 +33,6 @@ I mean, just copy paste the codes :v
 ----
 
 **It may contain bugs**
-
+Need to fix:
+- [ ] Shortcut to open it
+- [ ] Back graphical issue when a extension doesn't cover it all
