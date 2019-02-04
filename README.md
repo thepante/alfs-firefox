@@ -4,7 +4,7 @@
 The idea for this is to have the sidebar always ready to show, without loading its content everytime we hit the button or shortcut, to open it and show us whatever we have there.
 
 
-It's quite simply, check it up: 
+It's quite simply, check the video right there.
 
 ## Preferences
 The sidebar can be size you want. The _preferences_ are indicated in the `.CSS` itself. Search for:
@@ -20,7 +20,7 @@ The sidebar can be size you want. The _preferences_ are indicated in the `.CSS` 
 2. Copy `userChrome.js` and `userChrome.css` files to the `chrome` folder
 3. Reopen Firefox
 
-> **Note:** `chrome` its a folder that the user can use to customize the Firefox interface. Read more here. If you don't have it, just create that. It is located inside your profile folder.
+> **Note:** `chrome` its a folder that the user can use to customize the Firefox interface. [Read more here](http://kb.mozillazine.org/index.php?title=UserChrome.css). If you don't have it, just create that. It is located inside your profile folder.
 
 > **Where's the profile folder?** 
 In your Firefox, go to the (hamburg) menu → `Help` → `Troubleshoot Information` OR type and enter to `about:support`. There is 'Profile Directory' information, click 'Open Directory'.
