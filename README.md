@@ -17,7 +17,7 @@ The sidebar can be size you want. The _preferences_ are indicated in the `.CSS` 
 
 ## How to get it
 #### If you dont have touched _that_ 'chrome' folder:
-1. Download this repo, or clone it
+1. [Download this .zip](https://github.com/thepante/alfs-firefox/releases/download/0.2/alfs-userchrome-0.2.zip)
 2. Copy `userChrome.js` and `userChrome.css` files to the `chrome` folder
 3. Reopen Firefox
 
