@@ -50,5 +50,5 @@ Restart Firefox. `about:restartrequired`
 **It may contain bugs**
 
 Need to fix:
-- [ ] Shortcut to open it
-- [ ] Back graphical issue when a extension doesn't cover it all
+- [X] Shortcut to open it. Momentary uses `ctrl+x`.
+- [ ] Minor graphical issue when a extension doesn't cover all its background.
