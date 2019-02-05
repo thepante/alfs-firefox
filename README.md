@@ -25,7 +25,7 @@ I know it can be conflictive, but is the only reazonable and comfy _solution_ at
 
 ## How to get it
 #### If you dont have touched _that_ 'chrome' folder:
-1. [**Download alfs .zip**](https://github.com/thepante/alfs-firefox/releases/download/0.2/alfs-userchrome-0.2.zip)
+1. [**Download alfs-userchrome .zip**](https://github.com/thepante/alfs-firefox/releases/latest)
 2. Copy `alfs.uc.js` and `userChrome.css` files to the `chrome` folder
 3. Reopen Firefox
 
