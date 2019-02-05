@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name           userChrome.js
+// @name           alfs.uc.js
 // @include        main
-// @version        0.3
+// @version        0.3.1
 // @note           u/thepante
 // ==/UserScript==
 
@@ -17,14 +17,14 @@ sideB.checked=false;
 
 function doitmf() {
   if (statbnt == 0) {
-    	console.log(statbnt+" : alfs open");
+        console.log(statbnt+" : alfs open");
         document.getElementById("sidebar-button").checked=true;
         alfs.className = ogclass + ' openit';
         alfs.hidden=false;
         statbnt = 1;
     }
     else {
-    	console.log(statbnt+" : alfs close");
+        console.log(statbnt+" : alfs close");
         document.getElementById("sidebar-button").checked=false;
         alfs.className = ogclass + ' closeit';
         alfs.hidden=false;
@@ -39,6 +39,6 @@ document.onkeyup = function(e) {
 };
 
 document.getElementById("sidebar-button").addEventListener('click', function(e){
-	event.preventDefault();
-	doitmf();
+    e.preventDefault();
+    doitmf();
 });
