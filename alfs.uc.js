@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           userChrome.js
 // @include        main
-// @version        0.0.1
+// @version        0.3
 // @note           u/thepante
 // ==/UserScript==
 
@@ -15,21 +15,30 @@ alfs.checked=true;
 alfs.className = ogclass + ' closeit';
 sideB.checked=false;
 
-document.getElementById("sidebar-button").addEventListener('click', function(e){
-	event.preventDefault();
-	if (statbnt == 0) {
+function doitmf() {
+  if (statbnt == 0) {
     	console.log(statbnt+" : alfs open");
-        sideB.checked=true;
+        document.getElementById("sidebar-button").checked=true;
         alfs.className = ogclass + ' openit';
         alfs.hidden=false;
         statbnt = 1;
     }
-      
     else {
     	console.log(statbnt+" : alfs close");
-        sideB.checked=false;
+        document.getElementById("sidebar-button").checked=false;
         alfs.className = ogclass + ' closeit';
         alfs.hidden=false;
         statbnt = 0;
     }
+}
+
+document.onkeyup = function(e) {
+  if (e.ctrlKey && e.which == 88) {
+    doitmf();
+  } 
+};
+
+document.getElementById("sidebar-button").addEventListener('click', function(e){
+	event.preventDefault();
+	doitmf();
 });
