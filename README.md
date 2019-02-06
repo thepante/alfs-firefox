@@ -7,15 +7,15 @@ The idea for this is to have the sidebar always ready to show, without loading i
 It's quite simply, check the video right there.
 
 ## Preferences
-The sidebar can be size you want. You can adjust the preferences in the `alfs.prefs.uc.js` file.
+The sidebar can be the size you want. You can adjust the preferences in the `alfs.prefs.uc.js` file.
 
-|Key|   Default  |  Info |  
-|:---|:---:|---:|
-|<sup>**position**</sup>| <sup>**Right**</sup> | <sup>**Attaching side**</sup> | 
-|<sup>**width**</sup>| <sup>**24em**</sup> | <sup>**Sidebar width**</sup> | 
-|<sup>**heigth**</sup>| <sup>**60%**</sup> | <sup>**Sidebar height**</sup> | 
-|<sup>**shadow_intensity**</sup>|   <sup>**0.1**</sup> |   <sup>**Can be negative eg: `-0.2`**</sup> | 
-|<sup>_in next update_</sup>| <sup>**`ctrl + x`**</sup> |   <sup>**Show/hide sidebar itself**</sup> | 
+| Key              | Default    | Info                       |  
+| :---             | ---:       | :---                       |  
+| position         | Right      | Attaching side             |  
+| width            | 24em       | Sidebar width              |  
+| heigth           | 60%        | Sidebar height             |  
+| shadow_intensity | 0.1        | Can be negative eg: `-0.2` |  
+| _in next update_ | `ctrl + x` | Show/hide sidebar itself   |  
 
 ## How to get it
 1. [**Download alfs-userchrome*.zip**](https://github.com/thepante/alfs-firefox/releases/latest)
