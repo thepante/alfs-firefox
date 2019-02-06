@@ -7,6 +7,7 @@
 
 var alfs = document.getElementById("sidebar-box");
 var sideB = document.getElementById("sidebar-button");
+var sideX = document.getElementById("sidebar-close");
 var ogclass = alfs.className;
 var statbnt = 0;
 
@@ -42,6 +43,11 @@ document.onkeydown = function(e) {
 };
 
 sideB.addEventListener('click', function(e){
+    e.preventDefault();
+    doitmf();
+});
+
+sideX.addEventListener('click', function(e){
     e.preventDefault();
     doitmf();
 });
