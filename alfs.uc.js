@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           alfs.uc.js
 // @include        main
-// @version        0.5.1
+// @version        0.6.1
 // @note           u/thepante
 // ==/UserScript==
 
