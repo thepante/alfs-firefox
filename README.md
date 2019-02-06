@@ -7,35 +7,26 @@ The idea for this is to have the sidebar always ready to show, without loading i
 It's quite simply, check the video right there.
 
 ## Preferences
-The sidebar can be size you want. The _preferences_ are indicated in the `.CSS` itself. Search for:
+The sidebar can be size you want. You can adjust the preferences in the `alfs.prefs.uc.js` file.
 
-|under|   search for  |   edit |  info |  
+|Key|   Default  |  Info |  
 |---|---|---|---|
-|<sup>**#browser**</sup>| <sup>**--sidebar-size**</sup> | <sup>**60%**</sup> | <sup>**Its height**</sup>  |
-|<sup>**#browser**</sup>| <sup>**--sidebar-width**</sup> | <sup>**24em**</sup> | <sup>**Its width**</sup>  |
-|<sup>**#browser**</sup>| <sup>**--shadow-strong**</sup> | <sup>**0.1**</sup> | <sup>**Shadow intensity. Can be negative**</sup>  |
-|<sup>**#sidebar-box**</sup>|   <sup>**right**</sup> |   <sup>**right**</sup> | <sup>**The position. Change `right` itself to `left` if you want it on the left**</sup> |
-
-----
-
-Also you can open and close it by keyboard: `ctrl` + `x`.  
-
-I know it can be conflictive, but is the only reazonable and comfy _solution_ at the moment. The idea is to use `b` instead of `x`. I'm working on it...
-
+|<sup>**position**</sup>| <sup>**Right**</sup> | <sup>**Attaching side**</sup> | 
+|<sup>**width**</sup>| <sup>**24em**</sup> | <sup>**Sidebar width**</sup> | 
+|<sup>**heigth**</sup>| <sup>**60%**</sup> | <sup>**Sidebar height**</sup> | 
+|<sup>**shadow_intensity**</sup>|   <sup>**0.1**</sup> |   <sup>**Can be negative eg: `-0.2`**</sup> | 
+|<sup>_in next update_</sup>| <sup>**`ctrl + x`**</sup> |   <sup>**Show/hide sidebar itself**</sup> | 
 
 ## How to get it
-#### If you dont have touched _that_ 'chrome' folder:
-1. [**Download alfs-userchrome .zip**](https://github.com/thepante/alfs-firefox/releases/latest)
-2. Copy `alfs.uc.js` and `userChrome.css` files to the `chrome` folder
+1. [**Download alfs-userchrome*.zip**](https://github.com/thepante/alfs-firefox/releases/latest)
+2. Copy its files to your `chrome` folder
 3. Reopen Firefox
 
 > **Note:** `chrome` its a folder that the user can use to customize the Firefox interface. [Read more here](http://kb.mozillazine.org/index.php?title=UserChrome.css). If you don't have it, just create that. It is located inside your profile folder.
 
-> **Where's the profile folder?** 
-In your Firefox, go to the (hamburg) menu → `Help` → `Troubleshoot Information` OR type and enter to `about:support`. There is 'Profile Directory' information, click 'Open Directory'.
-That's where the `chrome` folder should be located.
+> In your Firefox address bar type and enter to `about:support`. There is 'Profile Directory' information, click 'Open Directory'. That's where the `chrome` folder should be located at.
 
-## If you already have userChrome.css
+## If you already have an userChrome.css
 
 - Copy and paste `alfs.uc.js` to your 'chrome' folder
 - Open both `.css` files (yours and this from alfs)
@@ -44,11 +35,11 @@ That's where the `chrome` folder should be located.
 
 Restart Firefox. `about:restartrequired`
 
-
 ----
 
 **It may contain bugs**
 
-Need to fix:
-- [X] Shortcut to open it. Momentary uses `ctrl+x`.
+Please report issues. Need to fix:
+- [X] Shortcut to open it. Done but ↓
+- [ ] Preferences to adjust keyboard shortcut
 - [ ] Minor graphical issue when a extension doesn't cover all its background.
