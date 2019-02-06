@@ -6,6 +6,7 @@
 // ==/UserScript==
 
 var alfs = document.getElementById("sidebar-box");
+var browser = document.getElementById("browser");
 var sideB = document.getElementById("sidebar-button");
 var sideX = document.getElementById("sidebar-close");
 var ogclass = alfs.className;
@@ -16,6 +17,20 @@ alfs.checked=true;
 alfs.className = ogclass + ' closeit';
 sideB.checked=false;
 
+function besomecooler() {
+    if (typeof alfsPrefs !== 'undefined') {
+        var str = alfsPrefs.position;
+        selectedpos = str.toLowerCase();
+        if (selectedpos == 'right') {alfs.setAttribute("style", "right: 0;");} else {alfs.setAttribute("style", "left: 0;");}
+        browser.setAttribute("style", "--sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";");
+        console.log('alfs prefs from file');
+    }
+    else {
+        browser.setAttribute("style", "--sidebar-size: 60%; --sidebar-width: 24em; --shadow-strong: 0.1;");
+        alfs.setAttribute("style", "right: 0;");
+        console.log('alfs fallback prefs');
+    }
+} besomecooler();
 
 function doitmf() {
   if (statbnt == 0) {
@@ -51,6 +66,5 @@ sideX.addEventListener('click', function(e){
     e.preventDefault();
     doitmf();
 });
-
 
 

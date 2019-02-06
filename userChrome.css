@@ -8,9 +8,6 @@
              
   /* Sidebar flotante */
   #browser {
-    --sidebar-size: 60%;
-    --sidebar-width: 24em;
-    --shadow-strong: 0.1;
     position: absolute;
   }
   #appcontent {
@@ -29,7 +26,6 @@
   }
   #sidebar-box {
     position: absolute;
-    right: 0;
     height: calc(var(--sidebar-size) - 42px);
     z-index: 9999;
   }
