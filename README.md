@@ -10,7 +10,7 @@ It's quite simply, check the video right there.
 The sidebar can be size you want. You can adjust the preferences in the `alfs.prefs.uc.js` file.
 
 |Key|   Default  |  Info |  
-|---|---|---|---|
+|---|---|---|
 |<sup>**position**</sup>| <sup>**Right**</sup> | <sup>**Attaching side**</sup> | 
 |<sup>**width**</sup>| <sup>**24em**</sup> | <sup>**Sidebar width**</sup> | 
 |<sup>**heigth**</sup>| <sup>**60%**</sup> | <sup>**Sidebar height**</sup> | 
