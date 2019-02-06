@@ -22,7 +22,8 @@ The sidebar can be the size you want. You can adjust the preferences in the `alf
 2. Copy its files to your `chrome` folder
 3. Reopen Firefox
 
-> **Note:** `chrome` its a folder that the user can use to customize the Firefox interface. [Read more here](http://kb.mozillazine.org/index.php?title=UserChrome.css). If you don't have it, just create that. It is located inside your profile folder.
+> **Note:** `chrome` its a folder that the user can use to customize the Firefox interface. [Read more here](http://kb.mozillazine.org/index.php?title=UserChrome.css). 
+If you don't have it, just create that. It is located inside your profile folder.
 
 > In your Firefox address bar type and enter to `about:support`. There is 'Profile Directory' information, click 'Open Directory'. That's where the `chrome` folder should be located at.
 
