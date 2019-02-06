@@ -18,7 +18,7 @@ The sidebar can be the size you want. You can adjust the preferences in the `alf
 | _in next update_ | `ctrl + x` | Show/hide sidebar itself   |  
 
 ## How to get it
-1. [**Download alfs-userchrome*.zip**](https://github.com/thepante/alfs-firefox/releases/latest)
+1. [**Download alfs-userchrome-\*.zip**](https://github.com/thepante/alfs-firefox/releases/latest)
 2. Copy its files to your `chrome` folder
 3. Reopen Firefox
 
