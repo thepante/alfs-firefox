@@ -8,14 +8,23 @@ It's quite simply, check the video right there.
 
 ## Preferences
 The sidebar can be the size you want. You can adjust the preferences in the `alfs.prefs.uc.js` file.
+The preferences file isn't mandatory. If there is not such file then it gonna be use defaults adjusts.
 
-| Key              | Default    | Info                       |  
-| :---             | ---:       | :---                       |  
-| position         | Right      | Attaching side             |  
-| width            | 24em       | Sidebar width              |  
-| heigth           | 60%        | Sidebar height             |  
-| shadow_intensity | 0.1        | Can be negative eg: `-0.2` |  
-| _in next update_ | `ctrl + x` | Show/hide sidebar itself   |  
+| Key              | Default    | Info                                  |  
+| :---             | ---:       | :---                                  |  
+| position         | Right      | Attaching side ['Left' or 'Right']    |  
+| width            | 24em       | Sidebar width                         |  
+| heigth           | 60%        | Sidebar height                        |  
+| shadow_intensity | 0.1        | Can be negative too, eg: `-0.2`       |  
+| debug            | `false`    | Can be enabled [`true`] to check info |  
+| _in next update_ | `ctrl + x` | Show/hide sidebar itself              |  
+
+
+### It's draggable  
+You can move it! Just pressing `shift` key while clicking on the headerbar of the sidebar.
+The new position from that action, it's gonna be attached to the sidebar initial position (left or right side of the window), which you can adjust on the preferences file.
+
+> **Note that this draggable feature doesn't save its position for the next Firefox session**. Also it's a bit buggy. Hope fix soon.
 
 ## How to get it
 1. [**Download alfs-userchrome-\*.zip**](https://github.com/thepante/alfs-firefox/releases/latest)
