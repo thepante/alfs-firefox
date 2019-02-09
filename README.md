@@ -7,16 +7,16 @@ The idea for this is to have the sidebar always ready to show, without loading i
 It's quite simply, check the video right there.
 
 ## Preferences
-The sidebar can be the size you want. You can adjust the preferences in the `alfs.prefs.uc.js` file.
+The sidebar can be the size you want. You can adjust the preferences in the `alfs.prefs.uc.js` file.  
 The preferences file isn't mandatory. If there is not such file then it gonna be use defaults adjusts.
 
 | Key              | Default    | Info                                  |  
 | :---             | ---:       | :---                                  |  
-| position         | Right      | Attaching side ['Left' or 'Right']    |  
+| position         | Right      | Attaching side `Left` or `Right`   	  |  
 | width            | 24em       | Sidebar width                         |  
 | heigth           | 60%        | Sidebar height                        |  
 | shadow_intensity | 0.1        | Can be negative too, eg: `-0.2`       |  
-| debug            | `false`    | Can be enabled [`true`] to check info |  
+| debug            | `false`    | Can be enabled with `true`            |  
 | _in next update_ | `ctrl + x` | Show/hide sidebar itself              |  
 
 
