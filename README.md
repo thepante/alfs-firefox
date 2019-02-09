@@ -10,14 +10,18 @@ It's quite simply, check the video right there.
 The sidebar can be the size you want. You can adjust the preferences in the `alfs.prefs.uc.js` file.  
 The preferences file isn't mandatory. If there is not such file then it gonna be use defaults adjusts.
 
-| Key              | Default    | Info                                  |  
-| :---             | ---:       | :---                                  |  
-| position         | Right      | Attaching side `Left` or `Right`   	  |  
-| width            | 24em       | Sidebar width                         |  
-| heigth           | 60%        | Sidebar height                        |  
-| shadow_intensity | 0.1        | Can be negative too, eg: `-0.2`       |  
-| debug            | `false`    | Can be enabled with `true`            |  
-| _in next update_ | `ctrl + x` | Show/hide sidebar itself              |  
+| Key              | Default | Info                                                                                                                    |  
+| :---             | ---:    | :---                                                                                                                    |  
+| position         | `Right` | Attaching side `Left` or `Right`                                                                                        |  
+| width            | `24em`  | Sidebar width                                                                                                           |  
+| heigth           | `60%`   | Sidebar height                                                                                                          |  
+| shadow_intensity | `0.1`   | Can be negative too, eg: `-0.2`                                                                                         |  
+| keybind_ctrl     | `1`     | `0`= disabled, `1`= ctrl, `2`= alt                                                                                      |  
+| keybind_key      | `88`    | Code for the `x` key. Can check the list with the codes [here](https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes) |  
+| debug            | `false` | Can be enabled with `true`                                                                                              |  
+
+
+ **Shortcut to open and hide:**  Default values are for using `ctrl + x`
 
 
 ## It's draggable  
@@ -58,6 +62,6 @@ Restart Firefox. `about:restartrequired`
 **It may contain bugs**
 
 Please report issues. Need to fix:
-- [X] Shortcut to open it. Done but ↓
-- [ ] Preferences to adjust keyboard shortcut
+- [X] Shortcut to open it. Done
+- [X] Preferences to adjust keyboard shortcut. Done
 - [ ] Minor graphical issue when a extension doesn't cover all its background.

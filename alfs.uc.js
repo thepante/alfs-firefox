@@ -47,12 +47,27 @@ function move(e) {
     debugM('L (' + e.clientX + ')[' + vwTOpx(100) + '](' + rightX + ') R || T (' + e.clientY + ')[' + vhTOpx(100) + ']' );
 }
 
+// Make keybind //
+function keybindin(m) {
+    var modifier = 0;
+    if (alfsPrefs.keybind_ctrl === 1) {
+        modifier = m.ctrlKey;
+        return modifier;
+    }
+    else if (alfsPrefs.keybind_ctrl === 2) {
+        modifier = m.altKey;
+        return modifier;
+    }
+    else if (modifier === 0) {
+        return;
+    }
+}
+
 // Set user prefs //
 function getdamprefs() {
     browser.setAttribute("style", "--sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";");
     debugM('prefs from file');
     if (attachedRight === true) {alfs.setAttribute("style", "right: 0;");} else {alfs.setAttribute("style", "left: 0;");}
-
 }
 
 // Defaults prefs //
@@ -96,7 +111,7 @@ function doitmf() {
 
 // Let it go... //
 document.onkeydown = function(e) {
-if (e.ctrlKey && e.which === 88) {
+if (keybindin(e) && e.which === alfsPrefs.keybind_key) {
     e.preventDefault();
     doitmf();
     e.stopPropagation();
