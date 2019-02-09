@@ -1,4 +1,4 @@
-[![Screenshot](https://i.imgur.com/3yoxdiF.png)](https://i.imgur.com/ZduZ3Ot.mp4)
+[![Screenshot](https://i.imgur.com/3yoxdiF.png)](https://i.imgur.com/ZduZ3Ot.gifv)
 
 ## Always loaded floating sidebar  
 The idea for this is to have the sidebar always ready to show, without loading its content everytime we hit the button or shortcut, to open it and show us whatever we have there.
@@ -20,15 +20,19 @@ The preferences file isn't mandatory. If there is not such file then it gonna be
 | _in next update_ | `ctrl + x` | Show/hide sidebar itself              |  
 
 
-### It's draggable  
+## It's draggable  
 You can move it! Just pressing `shift` key while clicking on the headerbar of the sidebar.
 The new position from that action, it's gonna be attached to the sidebar initial position (left or right side of the window), which you can adjust on the preferences file.
 
 ![Examples](https://i.imgur.com/2N9lWm1.png)
 
-**Recommended to use with an addon like 'Open in Sidebar'**. So for example, with the floating sidebar and that you can watch a Youtube video while on Reddit, and hide it while keep playing. Have open WhatsApp or Telegram chats really handy. Or even using it with a addon to get a minimap of the web you are watching. _Soon I will put some videos here._
+### Combine using with...
+ * [Tree Style Tab](https://addons.mozilla.org/es/firefox/addon/tree-style-tab/) - Manage the tabs from the sidebar
+ * [Side View](https://addons.mozilla.org/es/firefox/addon/side-view/) - Webs in sidebar. Eg: another Wikipedia article, a Youtube video, WhatsApp/Telegram, etc.
+ * [Minimap Scroller](https://addons.mozilla.org/es/firefox/addon/minimap-scroller-sidebar/) - Show a scrollable minimap of the actual page.
 
-> **Note that this draggable feature doesn't save its position for the next Firefox session**. Also it's a bit buggy. Hope fix soon.
+> **Note that this draggable feature doesn't save its position for the next Firefox session**.  
+Also can be a bit buggy sometimes.
 
 ## How to get it
 1. [**Download alfs-userchrome-\*.zip**](https://github.com/thepante/alfs-firefox/releases/latest)
