@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           alfs.uc.js
 // @include        main
-// @version        0.7.5
+// @version        0.7.8
 // @note           u/thepante
 // ==/UserScript==
 
@@ -22,38 +22,14 @@ alfs.className = ogclass + ' closeit';
 sideB.checked=false;
 
 // DebugMode //
-function debugM(d){
-    if (debugMode === true) {
-        console.log('alfs: ' + d); return;
-    }
-}
+function fromside(f) { if (attachedRight === true) { return "→ "; } else { return "← ";} return;}
+function debugM(d)   { if (debugMode === true) { console.log('alfs: ' + fromside() + d); return;}}
 
-// This is meth, precious meth... //
-function vwTOpx(value) {
-  var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.browser,
-    x = w.innerWidth || e.clientWidth || g.clientWidth,
-    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-
-  var result = (x*value)/100;
-  return result;
-}
-
-function pxTOvw(value) {
-  var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.browser,
-    x = w.innerWidth || e.clientWidth || g.clientWidth,
-    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-
-  var result = (100*value)/x;
-  return result;
-}
-debugM(vwTOpx(100));
-debugM(pxTOvw(1920));
+// Units conversions //
+function vwTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (x*value)/100; return result; }
+function pxTOvw(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (100*value)/x; return result; }
+function vhTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (y*value)/100; return result; }
+function pxTOvh(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (100*value)/y; return result; }
 
 // Make draggable when Shift+Click on sidebar headerbar //
 var m = document.getElementById('sidebar-header');
@@ -65,11 +41,10 @@ function mouseDown(e) {if (e.shiftKey) {window.addEventListener('mousemove', mov
 // Move from corrected side //
 function move(e) {
     var rightX = vwTOpx(100) - e.clientX;
-    alfs.style.top = e.clientY + 'px';
+    alfs.style.top = (e.clientY - 65) + 'px';
     if (attachedRight === true) {alfs.style.right = rightX + 'px';}
     else {alfs.style.left = e.clientX + 'px';}
-    debugM('pos ' + e.clientY + 'x' + e.clientX);
-    debugM('PXSFR ' + rightX);
+    debugM('L (' + e.clientX + ')[' + vwTOpx(100) + '](' + rightX + ') R || T (' + e.clientY + ')[' + vhTOpx(100) + ']' );
 }
 
 // Set user prefs //
@@ -77,6 +52,7 @@ function getdamprefs() {
     browser.setAttribute("style", "--sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";");
     debugM('prefs from file');
     if (attachedRight === true) {alfs.setAttribute("style", "right: 0;");} else {alfs.setAttribute("style", "left: 0;");}
+
 }
 
 // Defaults prefs //
@@ -135,5 +111,4 @@ sideX.addEventListener('click', function(e){
     e.preventDefault();
     doitmf();
 });
-
 
