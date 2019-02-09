@@ -24,6 +24,10 @@ The preferences file isn't mandatory. If there is not such file then it gonna be
 You can move it! Just pressing `shift` key while clicking on the headerbar of the sidebar.
 The new position from that action, it's gonna be attached to the sidebar initial position (left or right side of the window), which you can adjust on the preferences file.
 
+![Examples](https://i.imgur.com/2N9lWm1.png)
+
+**Recommended to use with an addon like 'Open in Sidebar'**. So for example, with the floating sidebar and that you can watch a Youtube video while on Reddit, and hide it while keep playing. Have open WhatsApp or Telegram chats really handy. Or even using it with a addon to get a minimap of the web you are watching. _Soon I will put some videos here._
+
 > **Note that this draggable feature doesn't save its position for the next Firefox session**. Also it's a bit buggy. Hope fix soon.
 
 ## How to get it
