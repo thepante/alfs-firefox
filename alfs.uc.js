@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           alfs.uc.js
 // @include        main
-// @version        1.0
+// @version        1.3
 // @note           u/thepante
 // ==/UserScript==
 
@@ -13,7 +13,7 @@ var clientWidth = document.documentElement.clientWidth;
 var ogclass = alfs.className;
 var statbnt = 0;
 var attachedRight = true;
-var debugMode = false;
+var selectedpos = "nopyet";
 
 // Load sidebar in the bushes //
 alfs.hidden=false;
@@ -21,9 +21,22 @@ alfs.checked=true;
 alfs.className = ogclass + ' closeit';
 sideB.checked=false;
 
-// DebugMode //
+// Get prefs if they exists //
+function besomecooler() {
+    if (typeof alfsPrefs !== 'undefined') {
+        var str = alfsPrefs.position;
+        debugM('prefs from file');
+    }
+    else { justbenormalpls(); var str = alfsPrefs.position;}
+    selectedpos = str.toLowerCase();
+    if (selectedpos === 'left') {attachedRight = false;}
+    return;
+} besomecooler();
+
+// Some info for debuggin //
 function fromside(f) { if (attachedRight === true) { return "→ "; } else { return "← ";} return;}
-function debugM(d)   { if (debugMode === true) { console.log('alfs: ' + fromside() + d); return;}}
+function debugM(d)   { if (alfsPrefs.debug === true) { console.log('alfs: ' + fromside() + d);}}
+function info() {return alfsPrefs.position + " → " + selectedpos + " → " + sidePosition() + " → " + attachedRight + " → " + attachedto + " / " + alfsPrefs.itsfallback;}
 
 // Units conversions //
 function vwTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (x*value)/100; return result; }
@@ -31,8 +44,9 @@ function pxTOvw(value) { var w = window, x = w.innerWidth, y = w.innerHeight; va
 function vhTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (y*value)/100; return result; }
 function pxTOvh(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (100*value)/y; return result; }
 
-// Styling //
-function floatPosition() {if (attachedRight === true) {return "style", "right: 0;";} else { return "style", "left: 0;";}}
+// Declaring style rules //
+function sidePosition() { if (attachedRight === true) { return "right: 0;";} else { return "left: 0;";}} 
+var attachedto = sidePosition();
 var styleFloat = {
   '.sidebar-splitter'             : 'display: none;', 
   '#sidebar-reverse-position'     : 'display: none;',
@@ -41,7 +55,7 @@ var styleFloat = {
   '#appcontent'                   : 'top: 0; bottom: 0; right: 0; left: 0; position: absolute;',
   '#tabbrowser-tabbox'            : 'height:' + 100 + 'vh !important; width: 100% !important;',
   '#sidebar-header'               : 'width: 100%;',
-  '#sidebar-box'                  : 'position: absolute; height: calc(var(--sidebar-size) - 42px); z-index: 9999; ' + floatPosition() ,
+  '#sidebar-box'                  : 'position: absolute; height: calc(var(--sidebar-size) - 42px); z-index: 9999;' + attachedto,
   '#sidebar'                      : 'min-width: var(--sidebar-width) !important; min-height: 100%; position: absolute; border-radius: 0 0 0 3px;',
 };
 
@@ -50,8 +64,10 @@ var styleClassic={
   '#sidebar-reverse-position'     : 'display: none;',
   '#sidebar-extensions-separator' : 'display: none;',
   '#browser'                      : 'overflow: hidden;',
+  '#sidebar-box'                  : attachedto,
 };
 
+// Apply style rules //
 if (alfsPrefs.classic_mode === true) { var styled = styleClassic;} else { var styled = styleFloat;}
 Object.entries(styled).forEach(([key, value]) => {
    var ident = document.querySelector(key);
@@ -59,14 +75,14 @@ Object.entries(styled).forEach(([key, value]) => {
    debugM(key + ' →→ ' + value);
 });
 
-// Make draggable when Shift+Click on sidebar headerbar //
+// If is float then make draggable with shift+click //
+if (alfsPrefs.classic_mode != true){
 var m = document.getElementById('sidebar-header');
 m.addEventListener('mousedown', mouseDown, false);
 window.addEventListener('mouseup', mouseUp, false);
 function mouseUp() {window.removeEventListener('mousemove', move, true);}
-function mouseDown(e) {if (e.shiftKey) {window.addEventListener('mousemove', move, true);}}
+function mouseDown(e) {if (e.shiftKey) {window.addEventListener('mousemove', move, true);}}}
 
-// Move from corrected side //
 function move(e) {
     var rightX = vwTOpx(100) - e.clientX;
     alfs.style.top = (e.clientY - 65) + 'px';
@@ -75,7 +91,7 @@ function move(e) {
     debugM('L (' + e.clientX + ')[' + vwTOpx(100) + '](' + rightX + ') R || T (' + e.clientY + ')[' + vhTOpx(100) + ']' );
 }
 
-// Make keybind //
+// Shortcut modifier key declaration //
 function keybindin(m) {
     var modifier = 0;
     if (alfsPrefs.keybind_ctrl === 1) {
@@ -92,43 +108,25 @@ function keybindin(m) {
 }
 
 // Defaults prefs //
-function getdamprefs() {debugM('prefs from file');}
 function justbenormalpls() {
-    browser.setAttribute("style", "--sidebar-size: 60%; --sidebar-width: 24em; --shadow-strong: 0.1;");
-    alfs.setAttribute("style", "right: 0;");
+    var alfsPrefs = {'itsfallback' : true, 'position' : 'Right', 'width' : '24em', 'height' : '60%', 'shadow_intensity' : 0.1, 'keybind_ctrl' : 1, 'keybind_key' : 88, 'debug' : false, 'classic_mode' : false, };
     console.log('alfs fallback prefs!');
+    return;
 }
-
-// Assign settings //
-function besomecooler() {
-    if (typeof alfsPrefs !== 'undefined') {
-        var str = alfsPrefs.position;
-        selectedpos = str.toLowerCase();
-        if (selectedpos === 'left') {attachedRight = false;}
-        if (alfsPrefs.debug === true) {debugMode = true;}
-        getdamprefs();
-    }
-    else {
-        justbenormalpls();
-    }
-} besomecooler();
 
 // Classic mode //
-function dontfloat() {
-	if (attachedRight === true) {browser.setAttribute("style", "margin-right: -" + alfsPrefs.width + " !important;");} 
-	else {browser.setAttribute("style", "margin-left: -" + alfsPrefs.width + " !important;");}
-}
 function classicmode() {
-    var cm = alfsPrefs.classic_mode === true;
-    if (cm && statbnt === 0) {
-    		dontfloat();
+  var cm = alfsPrefs.classic_mode === true;
+    if (cm && statbnt === 0 && attachedRight === false) {
+      browser.setAttribute("style", "margin-right: -" + alfsPrefs.width + " !important; overflow: hidden;");
+    } 
+    else if (cm && statbnt === 0 && attachedRight === true) {
+      browser.setAttribute("style", "margin-left: -" + alfsPrefs.width + " !important; overflow: hidden;");
     }
     else if (cm && statbnt === 1) {
-    browser.setAttribute("style", "margin-left: 0px !important; margin-right: 0px !important;");
+      browser.setAttribute("style", "margin-left: 0px !important; margin-right: 0px !important; overflow: hidden;");
     }
-    else {}
 } classicmode();
-
 
 // Show or hide it //
 function doitmf() {
@@ -138,7 +136,7 @@ function doitmf() {
         alfs.className = ogclass + ' openit';
         alfs.hidden=false;
         statbnt = 1;
-		classicmode();
+        classicmode();
     }
     else {
         debugM(statbnt+" close");
@@ -146,7 +144,7 @@ function doitmf() {
         alfs.className = ogclass + ' closeit';
         alfs.hidden=false;
         statbnt = 0;
-		classicmode();
+        classicmode();
     }
 }
 
