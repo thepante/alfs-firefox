@@ -31,6 +31,47 @@ function pxTOvw(value) { var w = window, x = w.innerWidth, y = w.innerHeight; va
 function vhTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (y*value)/100; return result; }
 function pxTOvh(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (100*value)/y; return result; }
 
+// Styling //
+function floatPosition() {
+  if (attachedRight === true) {
+   return "style", "right: 0;";
+  } 
+  else {
+    return "style", "left: 0;";
+  }
+}
+var styleFloat = {
+  '.sidebar-splitter'             : 'display: none;', 
+  '#sidebar-reverse-position'     : 'display: none;',
+  '#sidebar-extensions-separator' : 'display: none;',
+  '#browser'                      : "overflow: hidden; position: absolute; --sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";",
+  '#appcontent'                   : 'top: 0; bottom: 0; right: 0; left: 0; position: absolute;',
+  '#tabbrowser-tabbox'            : 'height:' + 100 + 'vh !important; width: 100% !important;',
+  '#sidebar-header'               : 'width: 100%;',
+  '#sidebar-box'                  : 'position: absolute; height: calc(var(--sidebar-size) - 42px); z-index: 9999; ' + floatPosition() ,
+  '#sidebar'                      : 'min-width: var(--sidebar-width) !important; min-height: 100%; position: absolute; border-radius: 0 0 0 3px;',
+};
+
+var styleClassic={
+  '.sidebar-splitter'             : 'display: none;', 
+  '#sidebar-reverse-position'     : 'display: none;',
+  '#sidebar-extensions-separator' : 'display: none;',
+  '#browser'                      : 'overflow: hidden;',
+};
+
+if (alfsPrefs.classic_mode === true) {
+  var styled = styleClassic;
+}
+else {
+  var styled = styleFloat;
+}
+
+Object.entries(styled).forEach(([key, value]) => {
+   var ident = document.querySelector(key);
+   ident.setAttribute("style", value);
+   console.log(key + ' →→ ' + value);
+});
+
 // Make draggable when Shift+Click on sidebar headerbar //
 var m = document.getElementById('sidebar-header');
 m.addEventListener('mousedown', mouseDown, false);
@@ -65,9 +106,8 @@ function keybindin(m) {
 
 // Set user prefs //
 function getdamprefs() {
-    browser.setAttribute("style", "--sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";");
     debugM('prefs from file');
-    if (attachedRight === true) {alfs.setAttribute("style", "right: 0;");} else {alfs.setAttribute("style", "left: 0;");}
+    
 }
 
 // Defaults prefs //
@@ -91,6 +131,23 @@ function besomecooler() {
     }
 } besomecooler();
 
+// Classic mode //
+function dontfloat() {
+	if (attachedRight === true) {browser.setAttribute("style", "margin-right: -" + alfsPrefs.width + " !important;");} 
+	else {browser.setAttribute("style", "margin-left: -" + alfsPrefs.width + " !important;");}
+}
+function classicmode() {
+    var cm = alfsPrefs.classic_mode === true;
+    if (cm && statbnt === 0) {
+    		dontfloat();
+    }
+    else if (cm && statbnt === 1) {
+    browser.setAttribute("style", "margin-left: 0px !important; margin-right: 0px !important;");
+    }
+    else {}
+} classicmode();
+
+
 // Show or hide it //
 function doitmf() {
   if (statbnt == 0) {
@@ -99,6 +156,7 @@ function doitmf() {
         alfs.className = ogclass + ' openit';
         alfs.hidden=false;
         statbnt = 1;
+		classicmode();
     }
     else {
         debugM(statbnt+" close");
@@ -106,6 +164,7 @@ function doitmf() {
         alfs.className = ogclass + ' closeit';
         alfs.hidden=false;
         statbnt = 0;
+		classicmode();
     }
 }
 
