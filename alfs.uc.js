@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           alfs.uc.js
 // @include        main
-// @version        0.7.8
+// @version        1.0
 // @note           u/thepante
 // ==/UserScript==
 
@@ -32,14 +32,7 @@ function vhTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; va
 function pxTOvh(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (100*value)/y; return result; }
 
 // Styling //
-function floatPosition() {
-  if (attachedRight === true) {
-   return "style", "right: 0;";
-  } 
-  else {
-    return "style", "left: 0;";
-  }
-}
+function floatPosition() {if (attachedRight === true) {return "style", "right: 0;";} else { return "style", "left: 0;";}}
 var styleFloat = {
   '.sidebar-splitter'             : 'display: none;', 
   '#sidebar-reverse-position'     : 'display: none;',
@@ -59,17 +52,11 @@ var styleClassic={
   '#browser'                      : 'overflow: hidden;',
 };
 
-if (alfsPrefs.classic_mode === true) {
-  var styled = styleClassic;
-}
-else {
-  var styled = styleFloat;
-}
-
+if (alfsPrefs.classic_mode === true) { var styled = styleClassic;} else { var styled = styleFloat;}
 Object.entries(styled).forEach(([key, value]) => {
    var ident = document.querySelector(key);
    ident.setAttribute("style", value);
-   console.log(key + ' →→ ' + value);
+   debugM(key + ' →→ ' + value);
 });
 
 // Make draggable when Shift+Click on sidebar headerbar //
@@ -104,13 +91,8 @@ function keybindin(m) {
     }
 }
 
-// Set user prefs //
-function getdamprefs() {
-    debugM('prefs from file');
-    
-}
-
 // Defaults prefs //
+function getdamprefs() {debugM('prefs from file');}
 function justbenormalpls() {
     browser.setAttribute("style", "--sidebar-size: 60%; --sidebar-width: 24em; --shadow-strong: 0.1;");
     alfs.setAttribute("style", "right: 0;");
