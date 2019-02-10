@@ -17,15 +17,17 @@ The preferences file isn't mandatory. If there is not such file then it gonna be
 | heigth           | `60%`   | Sidebar height                                                                                                          |  
 | shadow_intensity | `0.1`   | Can be negative too, eg: `-0.2`                                                                                         |  
 | keybind_ctrl     | `1`     | `0`= disabled, `1`= ctrl, `2`= alt                                                                                      |  
-| keybind_key      | `88`    | Code for the `x` key. Can check the list with the codes [here](https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes) |  
+| keybind_key      | `88`    | Code for the `x` key. Can check the list with the codes [here](https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes) |
+| classic_mode | `false` | To enable it use `true` - Read bottom for more info
 | debug            | `false` | Can be enabled with `true`                                                                                              |  
 
 
- **Shortcut to open and hide:**  Default values are for using `ctrl + x`
+ * **Shortcut to open and hide:**  Default values are for using `ctrl + x`  
+ * **Classic mode:** If you enable this option, the sidebar will not float. Will use the default Firefox behavior but its content keep loaded and shortcut working, so it doesn't have to be loaded every time it is open.
 
 
 ## It's draggable  
-You can move it! Just pressing `shift` key while clicking on the headerbar of the sidebar.
+You can move it! Just pressing `shift` key while clicking on the headerbar of the sidebar.  
 The new position from that action, it's gonna be attached to the sidebar initial position (left or right side of the window), which you can adjust on the preferences file.
 
 ![Examples](https://i.imgur.com/2N9lWm1.png)
