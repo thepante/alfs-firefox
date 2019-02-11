@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           alfs.uc.js
 // @include        main
-// @version        1.3
+// @version        1.2
 // @note           u/thepante
 // ==/UserScript==
 
@@ -45,7 +45,7 @@ function vhTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; va
 function pxTOvh(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (100*value)/y; return result; }
 
 // Declaring style rules //
-function sidePosition() { if (attachedRight === true) { return "right: 0;";} else { return "left: 0;";}} 
+function sidePosition() { if (attachedRight === true) { return "right: 0";} else { return "left: 0";}} 
 var attachedto = sidePosition();
 var styleFloat = {
   '.sidebar-splitter'             : 'display: none;', 
@@ -63,8 +63,12 @@ var styleClassic={
   '.sidebar-splitter'             : 'display: none;', 
   '#sidebar-reverse-position'     : 'display: none;',
   '#sidebar-extensions-separator' : 'display: none;',
-  '#browser'                      : 'overflow: hidden;',
-  '#sidebar-box'                  : attachedto,
+  '#browser'                      : "position: absolute; overflow:hidden; --sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";",
+  '#appcontent'                   : 'overflow: hidden; top: 0; bottom: 0; right: 0; left: 0; position: absolute;',
+  '#tabbrowser-tabbox'            : 'height: 100vh; width: 100% !important;',
+  '#sidebar-header'               : 'width: 100%;',
+  '#sidebar-box'                  : 'position: relative; height: calc(100vh - 72px); width: ' + alfsPrefs.width + ' !important; z-index: 9999;' + attachedto,
+  '#sidebar'                      : 'min-width: var(--sidebar-width) !important; min-height: 100%; position: absolute; border-radius: 0 0 0 3px;',
 };
 
 // Apply style rules //
@@ -116,15 +120,37 @@ function justbenormalpls() {
 
 // Classic mode //
 function classicmode() {
-  var cm = alfsPrefs.classic_mode === true;
-    if (cm && statbnt === 0 && attachedRight === false) {
-      browser.setAttribute("style", "margin-right: -" + alfsPrefs.width + " !important; overflow: hidden;");
+  var classic = alfsPrefs.classic_mode === true;
+  var attach_right = attachedRight === true;
+  var attach_left = attachedRight === false;
+  var sidebar_visible = statbnt === 1;
+  var sidebar_hided = statbnt === 0;
+  var appcontent = document.getElementById("appcontent");
+
+  var common_ac = "overflow: hidden; top: 0; bottom: 0; right: 0; left: 0; position: absolute;";
+  var common_sb = "position: relative; height: 0 !important; width: 0 !important; z-index: -9999;";
+  var right_bw = "margin-right: 0 !important; margin-left: 0 !important; position: relative;";
+  var left_bw = "margin-left: 0 !important; margin-right: 0 !important; position: absolute;";
+
+    if (classic && attach_right && sidebar_visible) {
+      browser.setAttribute("style", right_bw);
+      appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: " + alfsPrefs.width + "; left: 0; position: absolute;");
+      alfs.setAttribute("style", styleClassic["#sidebar-box"]);
     } 
-    else if (cm && statbnt === 0 && attachedRight === true) {
-      browser.setAttribute("style", "margin-left: -" + alfsPrefs.width + " !important; overflow: hidden;");
+    else if (classic && attach_left && sidebar_visible) {
+      browser.setAttribute("style", left_bw);
+      appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: 0; left: " + alfsPrefs.width + "; position: absolute;");
+      alfs.setAttribute("style", styleClassic["#sidebar-box"]);
     }
-    else if (cm && statbnt === 1) {
-      browser.setAttribute("style", "margin-left: 0px !important; margin-right: 0px !important; overflow: hidden;");
+    else if (classic && attach_right && sidebar_hided) {
+      browser.setAttribute("style", right_bw);
+      appcontent.setAttribute("style", common_ac);
+      alfs.setAttribute("style", common_sb);
+    }
+    else if (classic && attach_left && sidebar_hided) {
+      browser.setAttribute("style", left_bw);
+      appcontent.setAttribute("style", common_ac);
+      alfs.setAttribute("style", common_sb);
     }
 } classicmode();
 
