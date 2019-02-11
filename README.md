@@ -15,11 +15,12 @@ The preferences file isn't mandatory. If there is not such file then it gonna be
 | position         | `Right` | Attaching side `Left` or `Right`                                                                                        |  
 | width            | `24em`  | Sidebar width                                                                                                           |  
 | heigth           | `60%`   | Sidebar height                                                                                                          |  
-| shadow_intensity | `0.1`   | Can be negative too, eg: `-0.2`                                                                                         |  
+| shadow_intensity | `0.1`   | Can be negative too, eg: `-0.2` - _Disable_ with `-1`                                                                   |  
 | keybind_ctrl     | `1`     | `0`= disabled, `1`= ctrl, `2`= alt                                                                                      |  
 | keybind_key      | `88`    | Code for the `x` key. Can check the list with the codes [here](https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes) |
-| classic_mode | `false` | To enable it use `true` - Read bottom for more info
-| debug            | `false` | Can be enabled with `true`                                                                                              |  
+| classic_mode | `false` | To enable it use `true` - Read bottom for more info 
+| debug        | `false` | Can be enabled with `true`                          |  
+
 
 
  * **Shortcut to open and hide:**  Default values are for using `ctrl + x`  
@@ -63,7 +64,8 @@ Restart Firefox. `about:restartrequired`
 
 **It may contain bugs**
 
-Please report issues. Need to fix:
-- [X] Shortcut to open it. Done
-- [X] Preferences to adjust keyboard shortcut. Done
+Please report issues. Here's my list of pending:
+- [X] Shortcut to open it.
+- [X] Preferences to adjust keyboard shortcut.
 - [ ] Minor graphical issue when a extension doesn't cover all its background.
+- [ ] On classic mode: if selected left side, ATM doesn't show bottom tooltip that shows urls loading/target

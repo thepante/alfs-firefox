@@ -36,7 +36,8 @@ function besomecooler() {
 // Some info for debuggin //
 function fromside(f) { if (attachedRight === true) { return "→ "; } else { return "← ";} return;}
 function debugM(d)   { if (alfsPrefs.debug === true) { console.log('alfs: ' + fromside() + d);}}
-function info() {return alfsPrefs.position + " → " + selectedpos + " → " + sidePosition() + " → " + attachedRight + " → " + attachedto + " / " + alfsPrefs.itsfallback;}
+function info() {if (alfsPrefs.classic_mode === true) { var sty = "styleClassic"; } else { var sty = "styleFloat"; }
+  return alfsPrefs.position + " → " + selectedpos + " → " + sidePosition() + " → " + attachedRight + " → " + attachedto + " / its fallback?: " + alfsPrefs.itsfallback + " / " + sty; }
 
 // Units conversions //
 function vwTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (x*value)/100; return result; }
@@ -63,8 +64,7 @@ var styleClassic={
   '.sidebar-splitter'             : 'display: none;', 
   '#sidebar-reverse-position'     : 'display: none;',
   '#sidebar-extensions-separator' : 'display: none;',
-  '#browser'                      : "position: absolute; overflow:hidden; --sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";",
-  '#appcontent'                   : 'overflow: hidden; top: 0; bottom: 0; right: 0; left: 0; position: absolute;',
+  '#browser'                      : "--sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";",
   '#tabbrowser-tabbox'            : 'height: 100vh; width: 100% !important;',
   '#sidebar-header'               : 'width: 100%;',
   '#sidebar-box'                  : 'position: relative; height: calc(100vh - 72px); width: ' + alfsPrefs.width + ' !important; z-index: 9999;' + attachedto,
@@ -120,7 +120,6 @@ function justbenormalpls() {
 
 // Classic mode //
 function classicmode() {
-  var classic = alfsPrefs.classic_mode === true;
   var attach_right = attachedRight === true;
   var attach_left = attachedRight === false;
   var sidebar_visible = statbnt === 1;
@@ -132,27 +131,28 @@ function classicmode() {
   var right_bw = "margin-right: 0 !important; margin-left: 0 !important; position: relative;";
   var left_bw = "margin-left: 0 !important; margin-right: 0 !important; position: absolute;";
 
-    if (classic && attach_right && sidebar_visible) {
-      browser.setAttribute("style", right_bw);
-      appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: " + alfsPrefs.width + "; left: 0; position: absolute;");
+    if (attach_right && sidebar_visible) {
+      browser.setAttribute("style", styleClassic['#browser'] + right_bw);
+      appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: " + alfsPrefs.width + "; left: 0; position: relative;");
       alfs.setAttribute("style", styleClassic["#sidebar-box"]);
     } 
-    else if (classic && attach_left && sidebar_visible) {
-      browser.setAttribute("style", left_bw);
+    else if (attach_left && sidebar_visible) {
+      browser.setAttribute("style", styleClassic['#browser'] + left_bw);
       appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: 0; left: " + alfsPrefs.width + "; position: absolute;");
       alfs.setAttribute("style", styleClassic["#sidebar-box"]);
     }
-    else if (classic && attach_right && sidebar_hided) {
-      browser.setAttribute("style", right_bw);
+    else if (attach_right && sidebar_hided) {
+      browser.setAttribute("style", styleClassic['#browser'] + right_bw);
       appcontent.setAttribute("style", common_ac);
       alfs.setAttribute("style", common_sb);
     }
-    else if (classic && attach_left && sidebar_hided) {
-      browser.setAttribute("style", left_bw);
+    else if (attach_left && sidebar_hided) {
+      browser.setAttribute("style", styleClassic['#browser'] + left_bw);
       appcontent.setAttribute("style", common_ac);
       alfs.setAttribute("style", common_sb);
     }
-} classicmode();
+} function detectclassic(){ if (alfsPrefs.classic_mode === true) {classicmode();} return;} detectclassic();
+
 
 // Show or hide it //
 function doitmf() {
@@ -162,7 +162,7 @@ function doitmf() {
         alfs.className = ogclass + ' openit';
         alfs.hidden=false;
         statbnt = 1;
-        classicmode();
+        detectclassic();
     }
     else {
         debugM(statbnt+" close");
@@ -170,7 +170,7 @@ function doitmf() {
         alfs.className = ogclass + ' closeit';
         alfs.hidden=false;
         statbnt = 0;
-        classicmode();
+        detectclassic();
     }
 }
 
