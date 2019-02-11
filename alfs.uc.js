@@ -64,7 +64,7 @@ var styleClassic={
   '.sidebar-splitter'             : 'display: none;', 
   '#sidebar-reverse-position'     : 'display: none;',
   '#sidebar-extensions-separator' : 'display: none;',
-  '#browser'                      : "--sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";",
+  '#browser'                      : "overflow: hidden; --sidebar-size:"+ alfsPrefs.height +"; --sidebar-width:"+ alfsPrefs.width +"; --shadow-strong:"+ alfsPrefs.shadow_intensity +";",
   '#tabbrowser-tabbox'            : 'height: 100%; width: 100% !important;',
   '#sidebar-header'               : 'width: 100%;',
   '#sidebar-box'                  : 'position: relative; height: calc(100vh - 72px); width: ' + alfsPrefs.width + ' !important; z-index: 9999;' + attachedto,
@@ -128,8 +128,8 @@ function classicmode() {
 
   var common_ac = "overflow: hidden; top: 0; bottom: 0; right: 0; left: 0; position: absolute;";
   var common_sb = "position: relative; height: 0 !important; width: 0 !important; z-index: -9999;";
-  var right_bw = "margin-right: 0 !important; margin-left: 0 !important; position: relative;";
-  var left_bw = "margin-left: 0 !important; margin-right: 0 !important; position: absolute;";
+  var right_bw = "overflow: hidden; margin-right: 0 !important; margin-left: 0 !important; position: relative;";
+  var left_bw = "overflow: hidden; margin-left: 0 !important; margin-right: 0 !important; position: absolute;";
 
     if (attach_right && sidebar_visible) {
       browser.setAttribute("style", styleClassic['#browser'] + right_bw);
