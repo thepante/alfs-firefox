@@ -1,10 +1,10 @@
-[![Screenshot](https://i.imgur.com/3yoxdiF.png)](https://i.imgur.com/ZduZ3Ot.gifv)
+[![Screenshot](https://i.imgur.com/3yoxdiF.png)](https://imgur.com/a/35dfjzz)
 
 ## Always loaded floating sidebar  
 The idea for this is to have the sidebar always ready to show, without loading its content everytime we hit the button or shortcut, to open it and show us whatever we have there.
 
 
-It's quite simply, check the video right there.
+It's quite simply, check the [video demo here](https://imgur.com/a/35dfjzz).
 
 ## Preferences
 The sidebar can be the size you want. You can adjust the preferences in the `alfs.prefs.uc.js` file.  
