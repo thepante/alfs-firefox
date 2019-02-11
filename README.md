@@ -68,4 +68,3 @@ Please report issues. Here's my list of pending:
 - [X] Shortcut to open it.
 - [X] Preferences to adjust keyboard shortcut.
 - [X] Don't show urls bottom tooltip
-- [ ] Minor graphical issue when a extension doesn't cover all its background.
