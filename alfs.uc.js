@@ -173,6 +173,7 @@ function doitmf() {
         detectclassic();
     }
 }
+setTimeout(function(){if (sideB.checked === true){sideB.checked = false;}}, 1050); // workaround for button checked on start
 
 // Let it go... //
 document.onkeydown = function(e) {
@@ -185,10 +186,12 @@ if (keybindin(e) && e.which === alfsPrefs.keybind_key) {
 sideB.addEventListener('click', function(e){
     e.preventDefault();
     doitmf();
+    e.stopPropagation();
 });
 
 sideX.addEventListener('click', function(e){
     e.preventDefault();
     doitmf();
+    e.stopPropagation();
 });
 
