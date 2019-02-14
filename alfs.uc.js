@@ -131,7 +131,7 @@ function classicmode() {
   var common_ac = "overflow: hidden; top: 0; bottom: 0; right: 0; left: 0; position: absolute;";
   var common_sb = "position: relative; height: 0 !important; width: 0 !important; z-index: -9999;";
   var common_bw = "margin-right: 0 !important; margin-left: 0 !important; position: absolute;";
-  
+
     if (attach_right && sidebar_visible) {
       browser.setAttribute("style", styleClassic['#browser'] + common_bw);
       appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: " + alfsPrefs.width + "; left: 0; position: absolute;");
@@ -159,7 +159,7 @@ function vidPlayerMode(webpage) {
   var urlRegex = /(\/watch\?v\=)/;
   var vidurl = webpage.replace(urlRegex, '/embed/');
   sidebar.src=vidurl+'?autoplay=1';
-  browser.setAttribute("style", "overflow: hidden; position: absolute; --sidebar-size:263px; --sidebar-width:440px; --shadow-strong:0.1;");
+  browser.setAttribute("style", "overflow: hidden; position: absolute; --sidebar-size:262px; --sidebar-width:439px; --shadow-strong:0.1;");
   sidebar.setAttribute("style", styleFloat['#sidebar']+'border-radius: 0px !important;');
   itsvidplayerm = true;
 } 
