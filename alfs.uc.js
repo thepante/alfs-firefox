@@ -9,14 +9,16 @@ var alfs = document.getElementById("sidebar-box");
 var browser = document.getElementById("browser");
 var sideB = document.getElementById("sidebar-button");
 var sideX = document.getElementById("sidebar-close");
+var sidebar = document.getElementById('sidebar');
 var clientWidth = document.documentElement.clientWidth;
 var ogclass = alfs.className;
 var statbnt = 0;
 var attachedRight = true;
 var selectedpos = "nopyet";
+var itsvidplayerm = false;
 
 // Load sidebar in the bushes //
-alfs.hidden=false;
+setTimeout(function(e) {alfs.setAttribute("hidden", "true");}, 500);
 alfs.checked=true;
 alfs.className = ogclass + ' closeit';
 sideB.checked=false;
@@ -128,31 +130,40 @@ function classicmode() {
 
   var common_ac = "overflow: hidden; top: 0; bottom: 0; right: 0; left: 0; position: absolute;";
   var common_sb = "position: relative; height: 0 !important; width: 0 !important; z-index: -9999;";
-  var right_bw = "overflow: hidden; margin-right: 0 !important; margin-left: 0 !important; position: absolute;";
-  var left_bw = "overflow: hidden; margin-left: 0 !important; margin-right: 0 !important; position: absolute;";
-
+  var common_bw = "margin-right: 0 !important; margin-left: 0 !important; position: absolute;";
+  
     if (attach_right && sidebar_visible) {
-      browser.setAttribute("style", styleClassic['#browser'] + right_bw);
+      browser.setAttribute("style", styleClassic['#browser'] + common_bw);
       appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: " + alfsPrefs.width + "; left: 0; position: absolute;");
       alfs.setAttribute("style", styleClassic["#sidebar-box"]);
     } 
     else if (attach_left && sidebar_visible) {
-      browser.setAttribute("style", styleClassic['#browser'] + left_bw);
+      browser.setAttribute("style", styleClassic['#browser'] + common_bw);
       appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: 0; left: " + alfsPrefs.width + "; position: absolute;");
       alfs.setAttribute("style", styleClassic["#sidebar-box"]);
     }
     else if (attach_right && sidebar_hided) {
-      browser.setAttribute("style", styleClassic['#browser'] + right_bw);
+      browser.setAttribute("style", styleClassic['#browser'] + common_bw);
       appcontent.setAttribute("style", common_ac);
       alfs.setAttribute("style", common_sb);
     }
     else if (attach_left && sidebar_hided) {
-      browser.setAttribute("style", styleClassic['#browser'] + left_bw);
+      browser.setAttribute("style", styleClassic['#browser'] + common_bw);
       appcontent.setAttribute("style", common_ac);
       alfs.setAttribute("style", common_sb);
     }
 } function detectclassic(){ if (alfsPrefs.classic_mode === true) {classicmode();} return;} detectclassic();
 
+// Video player mode //
+function vidPlayerMode(webpage) {
+  var urlRegex = /(\/watch\?v\=)/;
+  var vidurl = webpage.replace(urlRegex, '/embed/');
+  sidebar.src=vidurl+'?autoplay=1';
+  browser.setAttribute("style", "overflow: hidden; position: absolute; --sidebar-size:263px; --sidebar-width:440px; --shadow-strong:0.1;");
+  sidebar.setAttribute("style", styleFloat['#sidebar']+'border-radius: 0px !important;');
+  itsvidplayerm = true;
+} 
+function pip(link) {doitmf(); vidPlayerMode(link); return;}
 
 // Show or hide it //
 function doitmf() {
@@ -181,7 +192,12 @@ if (keybindin(e) && e.which === alfsPrefs.keybind_key) {
     e.preventDefault();
     doitmf();
     e.stopPropagation();
-}};
+}
+else if (e.ctrlKey && e.which === 89) {
+    e.preventDefault();
+    //to do...
+    e.stopPropagation();
+  }};
 
 sideB.addEventListener('click', function(e){
     e.preventDefault();
@@ -193,5 +209,13 @@ sideX.addEventListener('click', function(e){
     e.preventDefault();
     doitmf();
     e.stopPropagation();
+    if (itsvidplayerm === true) {
+      sidebar.src='chrome://browser/content/webext-panels.xul';
+      browser.setAttribute("style", styleFloat['#browser']);
+      sidebar.setAttribute("style", styleFloat['#sidebar']);
+      SidebarUI.show('viewBookmarksSidebar'); // as default show bookmarks
+      SidebarUI.show("treestyletab_piro_sakura_ne_jp-sidebar-action"); // if exists tst
+      itsvidplayerm = false;
+    } else {}
 });
 
