@@ -41,12 +41,6 @@ function debugM(d)   { if (alfsPrefs.debug === true) { console.log('alfs: ' + fr
 function info() {if (alfsPrefs.classic_mode === true) { var sty = "styleClassic"; } else { var sty = "styleFloat"; }
   return alfsPrefs.position + " → " + selectedpos + " → " + sidePosition() + " → " + attachedRight + " → " + attachedto + " / its fallback?: " + alfsPrefs.itsfallback + " / " + sty; }
 
-// Units conversions //
-function vwTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (x*value)/100; return result; }
-function pxTOvw(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (100*value)/x; return result; }
-function vhTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (y*value)/100; return result; }
-function pxTOvh(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (100*value)/y; return result; }
-
 // Declaring style rules //
 function sidePosition() { if (attachedRight === true) { return "right: 0";} else { return "left: 0";}} 
 var attachedto = sidePosition();
@@ -73,6 +67,13 @@ var styleClassic={
   '#sidebar'                      : 'min-width: var(--sidebar-width) !important; min-height: 100%; position: absolute; border-radius: 0 0 0 3px;',
 };
 
+// Defaults prefs //
+function justbenormalpls() {
+    var alfsPrefs = {'itsfallback' : true, 'position' : 'Right', 'width' : '24em', 'height' : '60%', 'shadow_intensity' : 0.1, 'keybind_ctrl' : 1, 'keybind_key' : 88, 'debug' : false, 'classic_mode' : false, };
+    console.log('alfs fallback prefs!');
+    return;
+}
+
 // Apply style rules //
 if (alfsPrefs.classic_mode === true) { var styled = styleClassic;} else { var styled = styleFloat;}
 Object.entries(styled).forEach(([key, value]) => {
@@ -88,6 +89,8 @@ m.addEventListener('mousedown', mouseDown, false);
 window.addEventListener('mouseup', mouseUp, false);
 function mouseUp() {window.removeEventListener('mousemove', move, true);}
 function mouseDown(e) {if (e.shiftKey) {window.addEventListener('mousemove', move, true);}}}
+function vwTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (x*value)/100; return result; }
+function vhTOpx(value) { var w = window, x = w.innerWidth, y = w.innerHeight; var result = (y*value)/100; return result; }
 
 function move(e) {
     var rightX = vwTOpx(100) - e.clientX;
@@ -111,13 +114,6 @@ function keybindin(m) {
     else if (modifier === 0) {
         return;
     }
-}
-
-// Defaults prefs //
-function justbenormalpls() {
-    var alfsPrefs = {'itsfallback' : true, 'position' : 'Right', 'width' : '24em', 'height' : '60%', 'shadow_intensity' : 0.1, 'keybind_ctrl' : 1, 'keybind_key' : 88, 'debug' : false, 'classic_mode' : false, };
-    console.log('alfs fallback prefs!');
-    return;
 }
 
 // Classic mode //
