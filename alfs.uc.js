@@ -134,7 +134,6 @@ function classicmode() {
   browser.setAttribute("style", styleClassic['#browser'] + common_bw);
 
     if (attach_right && sidebar_visible) {
-     
       appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: " + alfsPrefs.width + "; left: 0; position: absolute;");
       alfs.setAttribute("style", styleClassic["#sidebar-box"]);
     } 
@@ -142,11 +141,7 @@ function classicmode() {
       appcontent.setAttribute("style", "overflow: hidden; top: 0; bottom: 0; right: 0; left: " + alfsPrefs.width + "; position: absolute;");
       alfs.setAttribute("style", styleClassic["#sidebar-box"]);
     }
-    else if (attach_right && sidebar_hided) {
-      appcontent.setAttribute("style", common_ac);
-      alfs.setAttribute("style", common_sb);
-    }
-    else if (attach_left && sidebar_hided) {
+    else if (attach_right || attach_left && sidebar_hided) {
       appcontent.setAttribute("style", common_ac);
       alfs.setAttribute("style", common_sb);
     }
