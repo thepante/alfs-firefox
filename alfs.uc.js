@@ -157,7 +157,7 @@ function vidPlayerMode(webpage) {
   var urlRegex = /(\/watch\?v\=)/;
   var vidurl = webpage.replace(urlRegex, '/embed/');
   sidebar.src=vidurl+'?autoplay=1';
-  browser.setAttribute("style", "overflow: hidden; position: absolute; --sidebar-size:262px; --sidebar-width:439px; --shadow-strong:0.1;");
+  browser.setAttribute("style", "overflow: hidden; position: absolute; --sidebar-size:262px; --sidebar-width:392px; --shadow-strong:0.1;");
   sidebar.setAttribute("style", styleFloat['#sidebar']+'border-radius: 0px !important;');
   itsvidplayerm = true;
 } 
