@@ -60,6 +60,13 @@ If you don't have it, just create that. It is located inside your profile folder
 
 Restart Firefox. `about:restartrequired`
 
+## Webextension companion
+You can also install the basic [**extension companion for alfs**](https://addons.mozilla.org/en-US/firefox/addon/alfs-b/) which add the functionality of a picture in picture mode that does work on YouTube and Vimeo (at the moment).  
+
+It adds a button on the urlbar when on supported sites. When it's pressed, the sidebar will load the video. It's a kind of picture in picture solution.  
+
+That's mean you can be on Reddit or the Firefox options page itself, and keep watching a video.
+
 ----
 
 **It may contain bugs**
