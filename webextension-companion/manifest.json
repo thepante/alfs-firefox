@@ -1,0 +1,31 @@
+{
+
+  "manifest_version": 2,
+  "name": "Alfs Buttons",
+  "version": "1.0",
+  "description": "Only add a button to identify the current Youtube/Vimeo url and let be detected for load in sidebar",
+  "icons": {
+    "48": "icon.svg"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "alfs-b@thepante.github.io"
+    }
+  },
+
+  "permissions": [
+    "tabs",
+    "activeTab"
+  ],
+
+  "page_action": {
+    "browser_style": true,
+    "default_icon": "icon-pip.svg",
+    "default_title": "Watch in sidebar"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
