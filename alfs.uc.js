@@ -145,14 +145,33 @@ function classicmode() {
 
 // Video player mode //
 function vidPlayerMode(webpage) {
-  var urlRegex = /(\/watch\?v\=)/;
-  var vidurl = webpage.replace(urlRegex, '/embed/');
-  sidebar.src=vidurl+'?autoplay=1';
+  if (webpage.includes("youtube.com")) {
+    var urlRegex = /(\/watch\?v\=)/;
+    vidurl = webpage.replace(urlRegex, '/embed/');
+    sidebar.src=vidurl+'?autoplay=1';
+  }
+  else if (webpage.includes("vimeo.com")) {
+    var urlRegex = /(vimeo\.com)/;
+    vidurl = webpage.replace(urlRegex, 'player.vimeo.com/video');
+    sidebar.src=vidurl+'?autoplay=1&title=0&byline=0&portrait=0';
+  }
   browser.setAttribute("style", "overflow: hidden; position: absolute; --sidebar-size:262px; --sidebar-width:392px; --shadow-strong:0.1;");
   sidebar.setAttribute("style", styleFloat['#sidebar']+'border-radius: 0px !important;');
   itsvidplayerm = true;
 } 
-function pip(link) {doitmf(); vidPlayerMode(link); return;}
+
+function buttonpip(that){ // extract link from alfs button extension
+    debugM('clicked pip button');
+    alfsbutton = that.style.cssText.toString();
+    regex = /start=(.*?)(?:\s|\?end|$)/g;
+    laurl = regex.exec(alfsbutton);
+
+    debugM(laurl[1]);
+    vidPlayerMode(laurl[1]);
+    doitmf();
+}
+
+function pip(link) {doitmf(); vidPlayerMode(link); return;} // Call video player mode
 
 // Show or hide it //
 function doitmf() {
@@ -176,33 +195,30 @@ function doitmf() {
 setTimeout(function(){if (sideB.checked === true){sideB.checked = false;}}, 1050); // workaround for button checked on start
 
 // Let it go... //
-document.onkeydown = function(e) {
+document.onkeydown = function(e) { // Shortcuts
 if (keybindin(e) && e.which === alfsPrefs.keybind_key) {
     e.preventDefault();
     doitmf();
     e.stopPropagation();
 }
-else if (e.ctrlKey && e.which === 89) {
+else if (e.ctrlKey && e.which === 89) { // Link to sidebar
     e.preventDefault();
     navigator.clipboard.readText().then(text => {vidPlayerMode(text);});
-    sideB.checked=true;
-    alfs.className = ogclass + ' openit';
-    alfs.hidden=false;
-    statbnt = 1;
+    doitmf();
     e.stopPropagation();
 }};
 
-sideB.addEventListener('click', function(e){
+sideB.addEventListener('click', function(e){ // Toolbar button
     e.preventDefault();
     doitmf();
     e.stopPropagation();
 });
 
-sideX.addEventListener('click', function(e){
+sideX.addEventListener('click', function(e){ // Close (X) sidebar button
     e.preventDefault();
     doitmf();
     e.stopPropagation();
-    if (itsvidplayerm === true) {
+    if (itsvidplayerm === true) { // if is player mode, it has to revert the changes
       sidebar.src='chrome://browser/content/webext-panels.xul';
       browser.setAttribute("style", styleFloat['#browser']);
       sidebar.setAttribute("style", styleFloat['#sidebar']);
@@ -212,3 +228,24 @@ sideX.addEventListener('click', function(e){
     } else {}
 });
 
+// Pip button detection //
+function thework(e, thetype, fromid){ // do the same for the different types
+  var buttonid = fromid;
+  e = e || window.event;
+  e = e.target || e.srcElement;
+  if (e.nodeName === thetype) {
+      debugM(e.id);
+      if (e.id === buttonid) { // if it is from alfs button extension, launch
+        debugM(e.id);
+        alfsButtonPa = document.getElementById(buttonid);
+        buttonpip(alfsButtonPa);
+} else {}}}
+// Assign the pip button detection
+var container1 = document.getElementById('urlbar-container');
+var container2 = document.getElementById('pageActionPanelMainView');
+container1.addEventListener('click', function(e){(reply_click());});
+container2.addEventListener('click', function(e){(reply_click());});
+function reply_click(e) {
+    thework(e, 'image', 'pageAction-urlbar-alfs-b_thepante_github_io');
+    thework(e, 'toolbarbutton', 'pageAction-panel-alfs-b_thepante_github_io');
+}
