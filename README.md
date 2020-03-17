@@ -2,6 +2,7 @@
 ---------
 
 [![Screenshot](https://i.imgur.com/3yoxdiF.png)](https://imgur.com/a/35dfjzz)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fthepante%2Falfs-firefox.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fthepante%2Falfs-firefox?ref=badge_shield)
 
 ## Always loaded floating sidebar  
 The idea for this is to have the sidebar always ready to show, without loading its content everytime we hit the button or shortcut, to open it and show us whatever we have there.
@@ -78,3 +79,7 @@ Please report issues. Here's my list of pending:
 - [X] Shortcut to open it.
 - [X] Preferences to adjust keyboard shortcut.
 - [X] Don't show urls bottom tooltip
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fthepante%2Falfs-firefox.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fthepante%2Falfs-firefox?ref=badge_large)
