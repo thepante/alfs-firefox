@@ -1,4 +1,7 @@
 ### Deprecated script. Didn't guaranteed to work in newer Firefox versions, in that case use the [updated version of this](https://github.com/thepante/SAL-Firefox).
+
+**Also I'm sorry for how this old one was written 🙈. I can't rewrite it right now. Neither I have no clue at wich Firefox version this script stopped working properly. I recommend to use the newer one linked above.**
+
 ---------
 
 [![Screenshot](https://i.imgur.com/3yoxdiF.png)](https://imgur.com/a/35dfjzz)
